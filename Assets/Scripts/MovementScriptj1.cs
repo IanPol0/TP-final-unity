@@ -5,6 +5,10 @@ using UnityEngine;
 public class MovementScriptj1 : MonoBehaviour
 {
     public float jumpForce;
+    public float fuerza;
+
+    public GameObject canion;
+    public GameObject bala;
 
     bool hasJump = true;
     Rigidbody rb;
@@ -26,11 +30,11 @@ public class MovementScriptj1 : MonoBehaviour
         {
             transform.Translate(0, 0, -0.1f);
         }
-        if (Input.GetKey(KeyCode.D) && hasJump)
+        if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(0, 5, 0);
         }
-        if (Input.GetKey(KeyCode.A) && hasJump)
+        if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(0, -5, 0);
         }
@@ -40,6 +44,15 @@ public class MovementScriptj1 : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             hasJump = false;
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            float rotacionY = canion.transform.rotation.y;
+            GameObject balaClon = Instantiate(bala, canion.transform.position + transform.forward * 1, canion.transform.rotation);
+            Rigidbody rbBalaClon = balaClon.GetComponent<Rigidbody>();
+            rbBalaClon.AddForce(transform.forward * fuerza, ForceMode.Impulse);
+            Destroy(balaClon, 3);
         }
     }
 

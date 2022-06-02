@@ -6,10 +6,14 @@ public class MovementScriptj2 : MonoBehaviour
 {
 
     public float jumpForce;
+    public float fuerza;
 
 
     bool hasJump = true;
     Rigidbody rb;
+
+    public GameObject canion;
+    public GameObject bala;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +32,11 @@ public class MovementScriptj2 : MonoBehaviour
         {
             transform.Translate(0, 0, -0.1f);
         }
-        if (Input.GetKey(KeyCode.RightArrow) && hasJump)
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Rotate(0, 5, 0);
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && hasJump)
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(0, -5, 0);
         }
@@ -41,6 +45,15 @@ public class MovementScriptj2 : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             hasJump = false;
+        }
+
+        if (Input.GetKey(KeyCode.L))
+        {
+            float rotacionY = canion.transform.rotation.y;
+            GameObject balaClon = Instantiate(bala, canion.transform.position + transform.forward*1, canion.transform.rotation);
+            Rigidbody rbBalaClon = balaClon.GetComponent<Rigidbody>();
+            rbBalaClon.AddForce(transform.forward * fuerza, ForceMode.Impulse);
+            Destroy(balaClon, 3);
         }
     }
 
