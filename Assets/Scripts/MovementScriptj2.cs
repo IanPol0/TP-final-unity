@@ -8,12 +8,12 @@ public class MovementScriptj2 : MonoBehaviour
     public float jumpForce;
     public float fuerza;
 
+    public GameObject canion;
+    public GameObject bala;
 
     bool hasJump = true;
     Rigidbody rb;
 
-    public GameObject canion;
-    public GameObject bala;
 
     // Start is called before the first frame update
     void Start()
@@ -47,10 +47,10 @@ public class MovementScriptj2 : MonoBehaviour
             hasJump = false;
         }
 
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             float rotacionY = canion.transform.rotation.y;
-            GameObject balaClon = Instantiate(bala, canion.transform.position + transform.forward*1, canion.transform.rotation);
+            GameObject balaClon = Instantiate(bala, canion.transform.position + transform.forward * 1, canion.transform.rotation);
             Rigidbody rbBalaClon = balaClon.GetComponent<Rigidbody>();
             rbBalaClon.AddForce(transform.forward * fuerza, ForceMode.Impulse);
             Destroy(balaClon, 3);

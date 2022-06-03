@@ -46,7 +46,7 @@ public class MovementScriptj1 : MonoBehaviour
             hasJump = false;
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             float rotacionY = canion.transform.rotation.y;
             GameObject balaClon = Instantiate(bala, canion.transform.position + transform.forward * 1, canion.transform.rotation);
