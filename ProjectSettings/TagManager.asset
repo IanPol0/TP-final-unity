@@ -7,6 +7,8 @@ TagManager:
   - ground
   - j1
   - j2
+  - Bullet
+  - LastGround
   layers:
   - Default
   - TransparentFX
