@@ -13,46 +13,47 @@ public class BehaviourScriptj1 : MonoBehaviour
     public Text balasRestantes;
 
     int BulletsLeft = 15;
+    float TiempoRecargando;
 
     bool hasJump = true;
+    bool isCounting = false;
+
     Rigidbody rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         balasRestantes.text = "" + BulletsLeft;
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W)) // Avanzar
         {
             transform.Translate(0, 0, 0.2f);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S)) //Retroceder
         {
             transform.Translate(0, 0, -0.2f);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D)) //Rotar para derecha
         {
             transform.Rotate(0, 5, 0);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)) //Rotar para izquierda
         {
             transform.Rotate(0, -5, 0);
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && hasJump) //SALTO
+        if (Input.GetKeyDown(KeyCode.Space) && hasJump) //Saltar
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             hasJump = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && BulletsLeft>0)
+        if (Input.GetKeyDown(KeyCode.E) && BulletsLeft>0) //Disparar
         {
             GameObject balaClon = Instantiate(bala, canion.transform.position + transform.forward * 1, canion.transform.rotation);
             Rigidbody rbBalaClon = balaClon.GetComponent<Rigidbody>();
@@ -60,19 +61,37 @@ public class BehaviourScriptj1 : MonoBehaviour
             Destroy(balaClon, 3);
 
             BulletsLeft--;
+
+            if(BulletsLeft == 0) //Si el jugador se queda sin balas, empieza a contar
+            {
+                isCounting = true;
+            }
+        }
+
+        if (isCounting) //Si esta contando
+        {
+            balasRestantes.text = Mathf.Floor(TiempoRecargando).ToString(); //Se muestra en el texto los segundos que faltan para volver a disparar
+            TiempoRecargando += Time.deltaTime; //Se cuentan los segundos que pasaron desde que se quedo sin balas
+
+            if (TiempoRecargando > 5.1) //Si ya pasaron 5 segundos
+            {
+                BulletsLeft = 15; //Se reinicia la cantidad de balas
+                isCounting = false; //Se deja de contar
+                TiempoRecargando = 0; //Se reinicia el tiempo que paso para la proxima que el jugador se quede sin balas
+            }
         }
     }
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "ground")
+        if (col.gameObject.tag == "ground") //Solo cuando el jugador toque el piso
         {
-            hasJump = true;
+            hasJump = true; //Va a poder volver a saltar
         }
 
-        if (col.gameObject.name == "LastGround")
+        if (col.gameObject.name == "LastGround") //Si el jugador se cae del mapa,
         {
-            transform.position = new Vector3(0, 1, -0);
+            transform.position = new Vector3(0, 1, -0); //Hay una plataforma extra mas abajo que lo hace volver a subir al mapa teletransportandolo
         }
     }
 }
