@@ -24,7 +24,7 @@ public class LifesManagerj2 : MonoBehaviour
             for (int i = 0; i < 300; i++)
             {
                 GameObject bolaCelebracionClon = Instantiate(BolaRoja);
-                Destroy(bolaCelebracionClon, 3);
+                Destroy(bolaCelebracionClon, 5);
             }
         }
 
