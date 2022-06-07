@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.45027345, g: 0.49793607, b: 0.5626471, a: 1}
+  m_IndirectSpecularColor: {r: 0.45027322, g: 0.49793547, b: 0.5626464, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1069,11 +1069,11 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 2
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
   m_GateFitMode: 2
-  m_FocalLength: 50
+  m_FocalLength: 40.51132
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1082,8 +1082,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 54.137867
-  orthographic: 1
+  field of view: 33
+  orthographic: 0
   orthographic size: 17.056005
   m_Depth: -1
   m_CullingMask:
@@ -1107,8 +1107,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: -0.21804868, y: 0.37666324, z: -0.091700196, w: -0.89563984}
-  m_LocalPosition: {x: 35.064045, y: 25.1805, z: -34.888813}
+  m_LocalRotation: {x: -0.13934739, y: 0.39217588, z: -0.060233258, w: -0.9072775}
+  m_LocalPosition: {x: 37.551594, y: 15.754595, z: -34.821896}
   m_LocalScale: {x: 1.4, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2444,7 +2444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473586600}
   m_LocalRotation: {x: 0, y: -0.28401542, z: 0, w: 0.95881975}
-  m_LocalPosition: {x: 0.132, y: 0.1, z: -3.086}
+  m_LocalPosition: {x: 0.132, y: 0.1, z: -2.73}
   m_LocalScale: {x: 0.789261, y: 3.2819793, z: 1.0205117}
   m_Children: []
   m_Father: {fileID: 2008155982}

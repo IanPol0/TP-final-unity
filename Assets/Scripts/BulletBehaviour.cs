@@ -11,6 +11,16 @@ public class BulletBehaviour : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         Destroy(gameObject);
+
+        if (col.gameObject.tag == "j1")
+        {
+            //hace ruidito de colision especifico para j1
+        }
+        
+        if (col.gameObject.tag == "j2")
+        {
+            //hace ruidito de colision especifico para j2
+        }
     }
 
 }
