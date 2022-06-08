@@ -69,6 +69,12 @@ public class BehaviourScriptj2 : MonoBehaviour
             }
         }
 
+        if (transform.position.y < -5)
+        {
+            transform.position = new Vector3(0, 3, 0);
+        }
+
+
         if (isCounting) //Si esta contando
         {
             balasRestantes.text = Mathf.Floor(TiempoRecargando).ToString(); //Se muestra en el texto los segundos que faltan para volver a disparar

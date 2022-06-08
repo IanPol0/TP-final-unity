@@ -80,6 +80,11 @@ public class BehaviourScriptj1 : MonoBehaviour
                 TiempoRecargando = 0; //Se reinicia el tiempo que paso para la proxima que el jugador se quede sin balas
             }
         }
+
+        if (transform.position.y < -5)
+        {
+            transform.position = new Vector3(0, 3, 0);
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -87,11 +92,6 @@ public class BehaviourScriptj1 : MonoBehaviour
         if (col.gameObject.tag == "ground") //Solo cuando el jugador toque el piso
         {
             hasJump = true; //Va a poder volver a saltar
-        }
-
-        if (col.gameObject.name == "LastGround") //Si el jugador se cae del mapa,
-        {
-            transform.position = new Vector3(0, 1, -0); //Hay una plataforma extra mas abajo que lo hace volver a subir al mapa teletransportandolo
         }
     }
 }

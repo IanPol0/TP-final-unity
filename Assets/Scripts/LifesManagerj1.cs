@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class LifesManagerj1 : MonoBehaviour
 {
     int vidas = 3;
+    float elapsedTime;
     public Text vidasRojo;
     public GameObject panel;
     public GameObject BolaAzul;
+
 
     void Start()
     {
@@ -18,6 +20,7 @@ public class LifesManagerj1 : MonoBehaviour
 
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         if (vidas == 0)
         {
             Destroy(gameObject);
@@ -31,19 +34,19 @@ public class LifesManagerj1 : MonoBehaviour
         }
 
         vidasRojo.text = "Vidas: " + vidas;
+
+        if (gameObject.transform.position.y < -3 && elapsedTime > 3)
+        {
+            vidas--;
+            elapsedTime = 0;
+        }
     }
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Bullet")
+        if (col.gameObject.tag == "Bullet" && elapsedTime > 3)
         {
             vidas--;
-        }
-    }
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "LastGround")
-        {
-            vidas--;
+            elapsedTime = 0;
         }
     }
 }
