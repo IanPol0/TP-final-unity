@@ -11,6 +11,10 @@ public class LifesManagerj1 : MonoBehaviour
     public GameObject panel;
     public GameObject BolaAzul;
 
+    public Material Rojo;
+    public Material Rosa;
+
+    bool recibedaño;
 
     void Start()
     {
@@ -21,12 +25,19 @@ public class LifesManagerj1 : MonoBehaviour
     void Update()
     {
         elapsedTime += Time.deltaTime;
+
+        if (elapsedTime > 3)
+        {
+            gameObject.GetComponent<Renderer>().material = Rojo;
+            recibedaño = true;
+        }
+
         if (vidas == 0)
         {
             Destroy(gameObject);
             panel.SetActive(true);
 
-            for (int i = 0; i<300; i++)
+            while(elapsedTime <3)
             {
                 GameObject bolaCelebracionClon = Instantiate(BolaAzul);
                 Destroy(bolaCelebracionClon, 5);
@@ -39,6 +50,7 @@ public class LifesManagerj1 : MonoBehaviour
         {
             vidas--;
             elapsedTime = 0;
+            
         }
     }
     void OnTriggerEnter(Collider col)
@@ -47,6 +59,8 @@ public class LifesManagerj1 : MonoBehaviour
         {
             vidas--;
             elapsedTime = 0;
+            gameObject.GetComponent<Renderer>().material = Rosa;
+            recibedaño = false;
         }
     }
 }

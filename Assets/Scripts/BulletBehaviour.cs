@@ -16,13 +16,14 @@ public class BulletBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        Destroy(gameObject);
+        
 
         if (col.gameObject.tag == "j1" || col.gameObject.tag == "j2")
         {
             shot.Play(0);
         }
 
+        Destroy(gameObject, 0.5f);
     }
 
 }

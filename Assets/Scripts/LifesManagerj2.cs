@@ -10,6 +10,11 @@ public class LifesManagerj2 : MonoBehaviour
     public GameObject panel;
     public GameObject BolaRoja;
 
+    public Material Azul;
+    public Material Celeste;
+
+    bool recibedaño;
+
     void Start()
     {
         panel.SetActive(false);
@@ -19,12 +24,17 @@ public class LifesManagerj2 : MonoBehaviour
     void Update()
     {
         elapsedTime += Time.deltaTime;
+
+        if (elapsedTime > 3)
+        {
+            gameObject.GetComponent<Renderer>().material = Azul;
+        }
         if (vidas == 0)
         {
             Destroy(gameObject);
             panel.SetActive(true);
 
-            for (int i = 0; i < 300; i++)
+            while(elapsedTime < 3)
             {
                 GameObject bolaCelebracionClon = Instantiate(BolaRoja);
                 Destroy(bolaCelebracionClon, 5);
@@ -48,6 +58,7 @@ public class LifesManagerj2 : MonoBehaviour
         {
             vidas--;
             elapsedTime = 0;
+            gameObject.GetComponent<Renderer>().material = Celeste;
         }
     }
 }
