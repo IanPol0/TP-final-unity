@@ -13,11 +13,17 @@ public class LifesManagerj2 : MonoBehaviour
     public Material Azul;
     public Material Celeste;
 
-    bool recibedaño;
+    AudioSource sounds;
+    public AudioClip sonidoImpacto;
+    public AudioClip SeCaeDelMapa;
+    public AudioClip victoria;
+
+    public AudioManager audiomanager;
 
     void Start()
     {
         panel.SetActive(false);
+        sounds = GetComponent<AudioSource>();
     }
 
 
@@ -29,22 +35,28 @@ public class LifesManagerj2 : MonoBehaviour
         {
             gameObject.GetComponent<Renderer>().material = Azul;
         }
+
         if (vidas == 0)
         {
             Destroy(gameObject);
             panel.SetActive(true);
 
-            while(elapsedTime < 3)
+            sounds.Stop();
+            audiomanager.PlaySound(victoria);
+
+            for (int i = 0; i<300; i++)
             {
                 GameObject bolaCelebracionClon = Instantiate(BolaRoja);
                 Destroy(bolaCelebracionClon, 5);
             }
         }
 
-        
+
 
         if (gameObject.transform.position.y < -3 && elapsedTime >3)
         {
+            sounds.clip = SeCaeDelMapa;
+            sounds.Play();
             vidas--;
             elapsedTime = 0;
         }
@@ -56,9 +68,12 @@ public class LifesManagerj2 : MonoBehaviour
     {
         if (col.gameObject.tag == "Bullet" && elapsedTime > 3)
         {
+            sounds.clip = sonidoImpacto;
+            sounds.Play();
             vidas--;
             elapsedTime = 0;
             gameObject.GetComponent<Renderer>().material = Celeste;
         }
     }
+
 }

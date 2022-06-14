@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.45027322, g: 0.49793547, b: 0.5626464, a: 1}
+  m_IndirectSpecularColor: {r: 0.45027345, g: 0.49793607, b: 0.5626471, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -929,6 +929,7 @@ MonoBehaviour:
   canion: {fileID: 934786210}
   bala: {fileID: 3515281430470457684, guid: 580839f646bbb5246b6ff3ef054b88e7, type: 3}
   balasRestantes: {fileID: 1227558973}
+  shootingSound: {fileID: 8300000, guid: e984c946121cc9e4a8eb30c8a97d4a5d, type: 3}
 --- !u!65 &530807142
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1035,6 +1036,10 @@ MonoBehaviour:
   BolaRoja: {fileID: 370473365107737654, guid: 7e556fc49733a88458fc4f1704d8d47e, type: 3}
   Azul: {fileID: 2100000, guid: 840cdf048153c1c4c9806ecddfa3283e, type: 2}
   Celeste: {fileID: 2100000, guid: 25802d791d166e84eab0d1a94a2bb008, type: 2}
+  sonidoImpacto: {fileID: 8300000, guid: dd90b95cd89ac78408701548a898309c, type: 3}
+  SeCaeDelMapa: {fileID: 8300000, guid: b69a3c2f79b924142a2ee68288118d8a, type: 3}
+  victoria: {fileID: 8300000, guid: 66e1a000cfdd1434ba23873e2629ba7e, type: 3}
+  audiomanager: {fileID: 577733911}
 --- !u!82 &530807148
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1223,8 +1228,9 @@ GameObject:
   m_Component:
   - component: {fileID: 577733910}
   - component: {fileID: 577733909}
+  - component: {fileID: 577733911}
   m_Layer: 0
-  m_Name: '[AudioBalas]'
+  m_Name: '[AudioManager]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1240,9 +1246,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9850508e7873c514299e74bc291e1dbc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 66e1a000cfdd1434ba23873e2629ba7e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1340,6 +1346,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &577733911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577733908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96487a40c0350d94682005ac9331433f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &682781335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1860,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882811608}
   m_CullTransparentMesh: 0
+--- !u!1 &889868748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 889868750}
+  - component: {fileID: 889868749}
+  m_Layer: 0
+  m_Name: '[Musica]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &889868749
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889868748}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9f17bc8089f58234b83fda0a162ab958, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.058
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &889868750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889868748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.037742, y: -2.1581259, z: 18.003633}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &934786210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,6 +2283,7 @@ MonoBehaviour:
   canion: {fileID: 262056311}
   bala: {fileID: 3515281430470457684, guid: 580839f646bbb5246b6ff3ef054b88e7, type: 3}
   balasRestantes: {fileID: 190267540}
+  shootingSound: {fileID: 8300000, guid: 7ac0790668df80444978e6bfbae5aeb1, type: 3}
 --- !u!65 &1206625861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2325,6 +2471,10 @@ MonoBehaviour:
     type: 3}
   Rojo: {fileID: 2100000, guid: 0ac6f29e8f75ea44fb673be90368f6a2, type: 2}
   Rosa: {fileID: 2100000, guid: 7ded4afb01a206d4b81542a53d23fd8f, type: 2}
+  impactSound: {fileID: 8300000, guid: 6333cd8acb968f64d80ad79317a22b19, type: 3}
+  SeCaeDelMapa: {fileID: 8300000, guid: b69a3c2f79b924142a2ee68288118d8a, type: 3}
+  victoria: {fileID: 8300000, guid: 66e1a000cfdd1434ba23873e2629ba7e, type: 3}
+  audiomanager: {fileID: 577733911}
 --- !u!1 &1226088484
 GameObject:
   m_ObjectHideFlags: 0

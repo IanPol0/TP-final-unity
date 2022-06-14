@@ -14,11 +14,18 @@ public class LifesManagerj1 : MonoBehaviour
     public Material Rojo;
     public Material Rosa;
 
-    bool recibedaño;
+    AudioSource sounds;
+    public AudioClip impactSound;
+    public AudioClip SeCaeDelMapa;
+    public AudioClip victoria;
+
+    public AudioManager audiomanager;
 
     void Start()
     {
         panel.SetActive(false);
+        sounds = GetComponent<AudioSource>();
+
     }
 
 
@@ -29,7 +36,6 @@ public class LifesManagerj1 : MonoBehaviour
         if (elapsedTime > 3)
         {
             gameObject.GetComponent<Renderer>().material = Rojo;
-            recibedaño = true;
         }
 
         if (vidas == 0)
@@ -37,30 +43,37 @@ public class LifesManagerj1 : MonoBehaviour
             Destroy(gameObject);
             panel.SetActive(true);
 
-            while(elapsedTime <3)
+            sounds.Stop();
+            audiomanager.PlaySound(victoria);
+
+            for(int i = 0; i<300; i++)
             {
                 GameObject bolaCelebracionClon = Instantiate(BolaAzul);
                 Destroy(bolaCelebracionClon, 5);
             }
+            
         }
 
         vidasRojo.text = "Vidas: " + vidas;
 
         if (gameObject.transform.position.y < -3 && elapsedTime > 3)
         {
+            sounds.clip = SeCaeDelMapa;
+            sounds.Play();
             vidas--;
             elapsedTime = 0;
-            
         }
     }
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Bullet" && elapsedTime > 3)
         {
+            sounds.clip = impactSound;
+            sounds.Play();
             vidas--;
             elapsedTime = 0;
             gameObject.GetComponent<Renderer>().material = Rosa;
-            recibedaño = false;
         }
     }
+
 }

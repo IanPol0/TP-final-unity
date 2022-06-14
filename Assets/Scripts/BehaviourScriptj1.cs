@@ -20,12 +20,13 @@ public class BehaviourScriptj1 : MonoBehaviour
 
     Rigidbody rb;
 
-    AudioSource shootingSound;
+    AudioSource sounds;
+    public AudioClip shootingSound;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        shootingSound = GetComponent<AudioSource>();
+        sounds = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -58,7 +59,9 @@ public class BehaviourScriptj1 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && BulletsLeft>0) //Disparar
         {
-            shootingSound.Play(0);
+            sounds.clip = shootingSound;
+            sounds.Play(0);
+
             GameObject balaClon = Instantiate(bala, canion.transform.position + transform.forward * 1, canion.transform.rotation);
             Rigidbody rbBalaClon = balaClon.GetComponent<Rigidbody>();
             rbBalaClon.AddForce(transform.forward * fuerza, ForceMode.Impulse);
