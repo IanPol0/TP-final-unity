@@ -11,9 +11,6 @@ public class LifesManagerj1 : MonoBehaviour
     public GameObject panel;
     public GameObject BolaAzul;
 
-    public Material Rojo;
-    public Material Rosa;
-
     AudioSource sounds;
     public AudioClip impactSound;
     public AudioClip SeCaeDelMapa;
@@ -32,11 +29,6 @@ public class LifesManagerj1 : MonoBehaviour
     void Update()
     {
         elapsedTime += Time.deltaTime;
-
-        if (elapsedTime > 3)
-        {
-            gameObject.GetComponent<Renderer>().material = Rojo;
-        }
 
         if (vidas == 0)
         {
@@ -72,7 +64,6 @@ public class LifesManagerj1 : MonoBehaviour
             sounds.Play();
             vidas--;
             elapsedTime = 0;
-            gameObject.GetComponent<Renderer>().material = Rosa;
         }
     }
 
